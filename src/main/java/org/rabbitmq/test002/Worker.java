@@ -25,7 +25,7 @@ public class Worker {
         channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-        channel.basicQos(1);
+        channel.basicQos(1);//not to give more than one message to a worker at a time
 
         final Consumer consumer = new DefaultConsumer(channel) {
             @Override
