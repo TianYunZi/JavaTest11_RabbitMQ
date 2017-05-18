@@ -39,7 +39,8 @@ public class Send {
         Map<String, Object> headers = new HashMap<>();
         //设置在2016/11/04,16:45:12向消费端推送本条消息
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime timeToPublish = LocalDateTime.of(2017, 5, 17, 15, 33, 0);
+        LocalDateTime timeToPublish = LocalDateTime.of(2017, 5, 18, 10, 35, 0);
+        timeToPublish = timeToPublish.plusSeconds(20);
         String readyToPushContent = "publish at " + formatter.format(now) + "\t deliver at" + formatter.format(timeToPublish);
         headers.put("x-delay", Duration.between(now, timeToPublish).toMillis());
         AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder().headers(headers).build();
